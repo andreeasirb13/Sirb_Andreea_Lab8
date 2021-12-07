@@ -11,12 +11,16 @@ namespace Sirb_Andreea_Lab8.Models
     {
         public int ID { get; set; }
 
-
+        [Required, StringLength(150, MinimumLength = 3)] //adnotare pt o lungime max pt titlu de 150 caract si min de 3 
         [Display(Name = "Book Title")]
         public string Title { get; set; }
+        
+        //formatul sa fie “Sirdecaractprenume Sirdecarcatnume”, litere mari numele si prenumele, si lung max 50 , min 3
+        [RegularExpression(@"^[A-Z][a-z]+\s[A-Z][a-z]+$", ErrorMessage = "Numele autorului trebuie sa fie de forma 'Prenume Nume'"), Required, StringLength(50, MinimumLength = 3)]
         public string Author { get; set; }
 
 
+        [Range(1, 300)] //// adnotare pt pret interval de pret valid 
         [Column(TypeName = "decimal(6, 2)")]
         public decimal Price { get; set; }
 
